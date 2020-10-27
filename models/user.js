@@ -16,12 +16,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    quiz: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Quiz",
-      },
-    ],
   },
   { timestamps: true }
 );
