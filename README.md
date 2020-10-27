@@ -229,12 +229,34 @@ exports.login = (req, res, next) => {
 };
 
 ```
+**4. Add middleware for protected routes** (for every route you want to protect add middleware example below
+```
+
+const express = require("express");
+const { body } = require("express-validator/check");
+
+const postsController = require("../controllers/posts");
+const isAuth = require("../middleware/is-auth");
+
+const router = express.Router();
+
+// GET request 
+router.get("/sample", isAuth, postsController.getAllPosts);
+
+// post request 
+router.post("/create-post", isAuth, ADD_VALIDATION_HERE ,postsController.createPost);
+
+module.exports = router;
+
+
+```
+
 
 # Tips & Common issues:
 
 Thank you to everyone for contributing!
 
-For an
+Before running server.js, make sure to install following dependency: jsonwebtoken, mongoose, express, express-validator, bcryptjs 
 
 Additionally, clearing the cache, node modules, and package-lock.json can also clear your slate. 
 1. `rm -rf node_modules .cache package-lock.json`
